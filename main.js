@@ -1,8 +1,10 @@
 let defaultContent = "-"
 let currentPlayer = document.body.querySelector("h1");
+let table$$ = document.body.querySelector("table");
 
-function createBoard () {
+function generateBoard () {
     let board$$ = document.body.querySelector("#board");
+    currentPlayer.textContent = "Jugador 1";
 
     board$$.innerHTML = "";
 
@@ -26,7 +28,7 @@ let button$$ = document.createElement("button");
 button$$.textContent = "Start";
 document.body.appendChild(button$$);
 
-button$$.addEventListener("click", createBoard);
+button$$.addEventListener("click", generateBoard);
 
 
 let activePlayer = 0;
@@ -43,6 +45,47 @@ function addResult() {
             activePlayer = 0;
         }
     }
+
+    let rows = document.body.querySelectorAll("tr");
+    let consoleBoard = [];
+    for (let row of rows) {
+        let cells = row.querySelectorAll("td");
+        let rowsContent = [];
+        for (let cell of cells) {
+            rowsContent.push(cell.textContent);
+        }
+        consoleBoard.push(rowsContent);
+    }
+
+    if(consoleBoard[0][0] === "X" && consoleBoard[0][1] === "X" && consoleBoard[0][2] === "X" ||
+     consoleBoard[0][0] === "X" && consoleBoard[1][0] === "X" &&  consoleBoard[2][0] === "X" || 
+     consoleBoard[0][1] === "X" && consoleBoard[1][1] === "X" &&  consoleBoard[2][1] === "X" || 
+     consoleBoard[0][2] === "X" && consoleBoard[1][2] === "X" &&  consoleBoard[2][2] === "X" || 
+     consoleBoard[0][0] === "X" && consoleBoard[1][1] === "X" &&  consoleBoard[2][2] === "X" || 
+     consoleBoard[0][2] === "X" && consoleBoard[1][1] === "X" &&  consoleBoard[2][0] === "X") {
+        console.log("Jugador 1 ha ganado!");
+        currentPlayer.textContent = "JUGADOR 1 GANA!";
+        activePlayer = 0;
+        let winnerImage = document.createElement("img");
+        winnerImage.src = "https://www.infobae.com/new-resizer/BVrHgP3GbBdpOdlqYq4boXSEXVo=/arc-anglerfish-arc2-prod-infobae/public/MJNQIO5UZIPXOIBDN3OVETUDME.jpg";
+        table$$.innerHTML = '';
+        table$$.appendChild(winnerImage);
+     } else if (consoleBoard[0][0] === "O" && consoleBoard[0][1] === "O" && consoleBoard[0][2] === "O" ||
+     consoleBoard[0][0] === "O" && consoleBoard[1][0] === "O" &&  consoleBoard[2][0] === "O" || 
+     consoleBoard[0][1] === "O" && consoleBoard[1][1] === "O" &&  consoleBoard[2][1] === "O" || 
+     consoleBoard[0][2] === "O" && consoleBoard[1][2] === "O" &&  consoleBoard[2][2] === "O" || 
+     consoleBoard[0][0] === "O" && consoleBoard[1][1] === "O" &&  consoleBoard[2][2] === "O" || 
+     consoleBoard[0][2] === "O" && consoleBoard[1][1] === "O" &&  consoleBoard[2][0] === "O") {
+        console.log("Jugador 2 ha ganado!");
+        currentPlayer.textContent = "JUGADOR 2 GANA!";
+        activePlayer = 0;
+        let winnerImage = document.createElement("img");
+        winnerImage.src = "https://imagenes.elpais.com/resizer/3cTuPonUNopq2Qq9j1YHJbHWOjs=/1960x1470/cloudfront-eu-central-1.images.arcpublishing.com/prisa/U5FM5XX6JBC6BDLDR6CXFBHEWY.jpg";
+        table$$.innerHTML = '';
+        table$$.appendChild(winnerImage);
+     } else {
+        console.log(consoleBoard);
+     }
 }
 
 //tengo que hacer la comprobación de que gane,
