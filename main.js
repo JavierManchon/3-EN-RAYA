@@ -63,6 +63,7 @@ function addResult() {
      consoleBoard[0][2] === "X" && consoleBoard[1][2] === "X" &&  consoleBoard[2][2] === "X" || 
      consoleBoard[0][0] === "X" && consoleBoard[1][1] === "X" &&  consoleBoard[2][2] === "X" || 
      consoleBoard[0][2] === "X" && consoleBoard[1][1] === "X" &&  consoleBoard[2][0] === "X") {
+        console.log(consoleBoard);
         console.log("Jugador 1 ha ganado!");
         currentPlayer.textContent = "JUGADOR 1 GANA!";
         activePlayer = 0;
@@ -76,6 +77,7 @@ function addResult() {
      consoleBoard[0][2] === "O" && consoleBoard[1][2] === "O" &&  consoleBoard[2][2] === "O" || 
      consoleBoard[0][0] === "O" && consoleBoard[1][1] === "O" &&  consoleBoard[2][2] === "O" || 
      consoleBoard[0][2] === "O" && consoleBoard[1][1] === "O" &&  consoleBoard[2][0] === "O") {
+        console.log(consoleBoard);
         console.log("Jugador 2 ha ganado!");
         currentPlayer.textContent = "JUGADOR 2 GANA!";
         activePlayer = 0;
